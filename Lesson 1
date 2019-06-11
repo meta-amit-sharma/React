@@ -1,5 +1,6 @@
-function Button(props) {
-  const handleClick = () => props.onClickFunction(props.value);
+function Button(props) { //props are used to pass values
+  const handleClick = () => props.onClickFunction(props.value); //to define function call to variavle
+  //onClick in Button accepets only function reference, no calls
   return (<button onClick={handleClick}> 
       +{props.value}
     </button>);
@@ -11,9 +12,11 @@ function Display(props){
   );
 }
 
-function App(){
+//data flow is allowed onlny from paternt to children, and in no other way
+function App(){ //this serves as parent for its enclosing elements
   const [counter, setCounter] = useState(10);
   const onClickFunction = (value) => setCounter(counter+value);
+  //this empty <> stands for React.fragments, we can also use div or any other element to enclose 
   return(
     <>
       <Button onClickFunction = {onClickFunction} value={1}/>
