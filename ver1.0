@@ -1,0 +1,30 @@
+function Button(props) {
+  const handleClick = () => props.onClickFunction(props.value);
+  return (<button onClick={handleClick}> 
+      +{props.value}
+    </button>);
+}
+
+function Display(props){
+  return (
+    <div>{props.counter}</div>
+  );
+}
+
+function App(){
+  const [counter, setCounter] = useState(10);
+  const onClickFunction = (value) => setCounter(counter+value);
+  return(
+    <>
+      <Button onClickFunction = {onClickFunction} value={1}/>
+      <Button onClickFunction = {onClickFunction} value={10}/>
+      <Button onClickFunction = {onClickFunction} value={20}/>
+      <Display counter={counter}/>
+    </>
+  );
+}
+
+ReactDOM.render(
+  <App / >,
+  document.getElementById('mountNode'),
+);
